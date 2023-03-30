@@ -1,0 +1,125 @@
+@import '../../variables.scss';
+
+.Products {
+    &List {
+        display: grid;
+        align-items: center;
+        gap: 25px;
+        justify-content: center;
+        min-height: calc(100vh - 265px);
+        width: 1150px;
+        border-radius: 5px;
+        font-size: 24px;
+    }
+}
+
+.products {
+    &List {
+        &Big {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &Small {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+}
+
+.noProductsList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--subAlt);
+    font-family: $montserrat;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+@media (max-width: 1600px) and (min-width: 1440px) {
+    .Products {
+        &List {
+            width: 990px;
+        }
+    }
+}
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .Products {
+        &List {
+            width: 700px;
+        }
+    }
+
+    .products {
+        &List {
+            &Big {
+                grid-template-columns: 1fr 1fr;
+            }
+    
+            &Small {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .Products {
+        &List {
+            width: 442px;
+        }
+    }
+
+    .products {
+        &List {
+            &Big {
+                grid-template-columns: 1fr;
+            }
+    
+            &Small {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .Products {
+        &List {
+            width: 405px;
+            gap: 0px;
+        }
+    }
+
+    .products {
+        &List {
+            &Big {
+                grid-template-columns: 1fr;
+            }
+    
+            &Small {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+@media (max-width: 424px) and (min-width: 320px) {
+    .Products {
+        &List {
+            width: 300px;
+            gap: 5px;
+        }
+    }
+
+    .products {
+        &List {
+            &Big {
+                grid-template-columns: 1fr;
+            }
+    
+            &Small {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}

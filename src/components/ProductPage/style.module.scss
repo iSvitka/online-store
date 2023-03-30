@@ -1,0 +1,40 @@
+@import '../../variables.scss';
+
+.ProductPage {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1560px;
+    width: 100%;
+}
+
+
+@media (max-width: 1600px) and (min-width: 1440px) {
+    .ProductPage {
+        max-width: 1400px;
+    }
+}
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .ProductPage {
+        max-width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .ProductPage {
+        max-width: 728px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .ProductPage {
+        max-width: 405px;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .ProductPage {
+        max-width: 300px;
+    }
+}

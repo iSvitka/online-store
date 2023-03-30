@@ -1,0 +1,130 @@
+@import '../../variables.scss';
+
+.creditCardCont {
+    display: grid;
+    grid-template-areas: 
+    "cardN cardN"
+    "cardV cardC";
+    gap: 25px 0;
+    align-items: center;
+    justify-items: center;
+    height: 150px;
+    width: 85%;
+    background: var(--main);
+    background: linear-gradient(135deg, var(--main) 20%, var(--sub) 80%);
+    border-radius: 15px;
+}
+
+.cardImg {
+    height: 35px;
+    width: 35px;
+    background-color: var(--text);
+    border-radius: 15px;
+}
+
+.cardNumberCont{
+    grid-area: cardN;
+    justify-self: flex-start;
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    gap: 5px;
+    margin-left: 25px;
+
+    & > .cardInput {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45px;
+        width: 90%;
+        padding: 0;
+        margin: 0;
+        font-family: $montserrat;
+        font-size: 24px;
+        text-align: center;
+    }
+}
+.cardValidCont {
+    grid-area: cardV;
+    align-self: flex-start;
+    padding-left: 30px;
+    color: var(--text);
+    font-family: $montserrat;
+    font-size: 18px;
+    font-weight: 300;
+
+    & > .cardInput {
+        width: 50%;
+        padding: 0;
+        font-family: $montserrat;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+.cardCvvCont {
+    grid-area: cardC;
+    align-self: flex-start;
+    color: var(--text);
+    font-family: $montserrat;
+    font-size: 18px;
+    font-weight: 300;
+
+    & > .cardInput {
+        width: 50%;
+        padding: 0;
+        font-family: $montserrat;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+.cardInput {
+    height: 35px;
+    background-color: var(--text);
+    border: none;
+    border-radius: 10px;
+    padding-left: 5px;
+    color: var(--textAlt);
+    font-size: 16px;
+    outline: none;
+    
+    &Invalid {
+        color: var(--error);
+    }
+    &Valid {
+        color: var(--subAlt);
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .cardNumberCont {
+        gap: 10px;
+        width: 100%;
+        margin-left: 0;
+        padding: 0 10px;
+    }
+
+    .cardValidCont {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-left: 10px;
+
+        & > .cardInput {
+            width: 70%;
+        }
+    }
+
+    .cardCvvCont {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        & > .cardInput {
+            width: 70%;
+        }
+    }
+}

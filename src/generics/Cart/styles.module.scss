@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+.cartButton {
+    display: flex;
+    position: relative;
+    padding: 5px;
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: $white;
+    transition: all 0.2s ease-in-out;
+}
+
+.cartImg {
+    display: block;
+    width: 40px;
+}
+
+.cartAmount {
+
+    &Visible {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        padding: 2px 5px;
+        box-sizing: border-box;
+        width: 30px;
+        border-radius: 20px;
+        background: var(--main);
+        color: var(--text);
+        font-family: $ubuntu;
+        font-weight: 500;
+        font-size: 13px;
+    }
+}

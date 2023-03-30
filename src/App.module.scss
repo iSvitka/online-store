@@ -1,0 +1,11 @@
+@import './variables';
+
+.App {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--background);
+}

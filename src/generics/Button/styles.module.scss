@@ -1,0 +1,53 @@
+@import '../../variables';
+
+.Button {
+    box-sizing: border-box;
+    margin-right: 20px;
+    padding: 0.6em 1.8em;
+
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $white;
+    font-family: inherit;
+
+    background-color: var(--main);
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: background-color 0.2s linear, color 0.2s linear;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        border-color: var(--subAlt);
+        background: var(--subAlt);
+        color: var(--text);
+    }
+
+    &:active {
+        background: var(--background);
+        border-color: transparent;
+        color: var(--main);
+    }
+}
+.reverse {
+    color: var(--subAlt);
+    background: none;
+    border: 1px solid var(--subAlt);
+
+    &:hover {
+        border-color: var(--subAlt);
+        background: var(--subAlt);
+        color: var(--text);
+    }
+
+    &:active {
+        background: var(--background);
+        border-color: transparent;
+        color: var(--main);
+    }
+}

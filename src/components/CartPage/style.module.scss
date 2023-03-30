@@ -1,0 +1,302 @@
+@import '../../variables.scss';
+
+.CartPage {
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1560px;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.sideTitle {
+    background-color: var(--background);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px 15px;
+}
+.Title {
+    font-size: 1.8rem;
+    color: var(--subAlt);
+    text-transform: capitalize;
+}
+.products {
+    flex-basis: 68%;
+    border-radius: 10px;
+    background-color: var(--background);
+}
+
+.pagination {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+.input {
+    font-size: 1.2rem;
+    margin-right: 10px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.summary {
+    flex-basis: 30%;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &Info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+
+        background-color: var(--text);
+    }
+
+    &Par {
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+    }
+}
+
+.blueText {
+    color: var(--subAlt);
+    font-weight: 700;
+}
+.redText {
+    color: var(--main);
+    font-weight: 700;
+}
+
+.inputPromo {
+    min-width: 80%;
+    padding: 10px 10px;
+    margin-bottom: 40px;
+
+    border-radius: 10px;
+    border: none;
+
+    background: var(--background);
+    font-size: 1.4rem;
+
+    &:focus {
+        outline: none;
+
+        &::placeholder {
+            color: var(--main);
+            opacity: 0.5;
+        }
+    }
+
+    &::placeholder {
+        color: var(--subAlt);
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 3rem;
+}
+
+
+.emptyCart {
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--main);
+    color: var(--subAlt);
+    font-size: 32px;
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+.paginationInputs {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+}
+
+.limitInput {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+    width: 40px;
+    margin: 0;
+    padding-left: 5px;
+    border: none;
+    border-radius: 10px;
+    background: var(--main);
+    color: var(--text);
+    outline: none;
+    font-family: $ubuntu;
+    font-size: 24px;
+
+    &::-webkit-inner-spin-button {
+        opacity: 1;
+        margin-right: 5px;
+        height: 30px;
+    }
+
+    &Cont {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+        width: 250px;
+    
+        & > span {
+            width: 100%;
+            font-size: 24px;
+        }
+    }
+}
+
+.pageInputCont {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+
+    & > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--subAlt);
+        font-size: 24px;
+    }
+}
+
+.pageButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--main);
+    color: var(--text);
+    cursor: pointer;
+    font-family: $ubuntu;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1600px) and (min-width: 1440px) {
+    .CartPage {
+        max-width: 1400px;
+    }
+}
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .CartPage {
+        max-width: 984px;
+    }
+
+    .summary {
+        width: 300px;
+    }
+
+    .products {
+        width: 600px;
+    }
+
+    .inputPromo {
+        width: 280px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .CartPage {
+        max-width: 728px;
+    }
+
+    .summary {
+        width: 200px;
+    }
+
+    .products {
+        width: 500px;
+    }
+
+    .inputPromo {
+        width: 200px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .CartPage {
+        flex-direction: column-reverse;
+        gap: 25px;
+        max-width: 405px;
+    }
+
+    .summary {
+        width: 405px;
+    }
+
+    .products {
+        width: 405px;
+    }
+
+    .inputPromo {
+        width: 200px;
+    }
+
+    .pagination {
+        margin-bottom: 20px;
+    }
+
+    .paginationInputs {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .CartPage {
+        flex-direction: column-reverse;
+        gap: 25px;
+        max-width: 300px;
+    }
+
+    .summary {
+        width: 300px;
+    }
+
+    .products {
+        width: 300px;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .inputPromo {
+        width: 250px;
+    }
+
+    .pagination {
+        margin-bottom: 20px;
+    }
+
+    .paginationInputs {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+}

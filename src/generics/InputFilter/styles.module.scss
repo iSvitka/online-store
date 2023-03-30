@@ -1,0 +1,119 @@
+@import '../../variables.scss';
+
+.container,
+.inputFilter,
+.inputLabel,
+.countSpan {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    font-family: $montserrat;
+    font-size: 18px;
+}
+
+.containerOff {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    font-family: $montserrat;
+    font-size: 18px;
+    opacity: 0.5;
+}
+
+.inputFilter {
+    position: relative;
+    height: 15px;
+    margin: 0 8px 0 3px;
+    width: 15px;
+    appearance: none;
+    cursor: pointer;
+
+    &::before {
+        display: block;
+        position: absolute;
+        left: -2px;
+        top: -2px;
+        height: 15px;
+        margin: 0;
+        width: 15px;
+        border: 2px solid var(--sub);
+        border-radius: 5px;
+        content: '';
+        background: var(--text);
+        transition: all 0.15s ease-in-out;
+    }
+
+    &:checked::before {
+        display: block;
+        position: absolute;
+        left: -2px;
+        top: -2px;
+        z-index: 1;
+        height: 15px;
+        margin: 0;
+        width: 15px;
+        border: 2px solid var(--main);
+        border-radius: 5px;
+        content: '';
+        background: var(--main);
+    }
+
+    &:checked::after {
+        border: solid var(--background);
+        border-width: 0 2px 2px 0;
+        background: transparent;
+        content: '';
+        display: block;
+        height: 10px;
+        left: 2px;
+        position: absolute;
+        top: 0px;
+        transform: rotate(45deg);
+        width: 5px;
+        z-index: 2;
+    }
+
+    &::after {
+        display: block;
+        position: absolute;
+        left: 2px;
+        top: 0px;
+        z-index: 2;
+        height: 10px;
+        width: 5px;
+        border: solid var(--text);
+        border-width: 0 2px 2px 0;
+        background: transparent;
+        content: '';
+        transform: rotate(45deg);
+    }
+
+    &:hover::before {
+        border-color: var(--subAlt);
+    }
+
+    &:checked:hover::before {
+        border-color: var(--subAlt);
+        background-color: var(--subAlt);
+    }
+}
+
+.inputLabel {
+    color: var(--subAlt);
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.countSpan {
+    margin-left: auto;
+}

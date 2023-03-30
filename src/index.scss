@@ -1,0 +1,47 @@
+@import './variables';
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #eeeeee;
+    --main: #ff6f00;
+    --sub: #ffb379;
+    --subAlt: #3b3b3b;
+    --text: #ffffff;
+    --textAlt: #000000;
+    --error: #ff1f1f;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    font-family: $ubuntu;
+
+    &::-webkit-scrollbar {
+        appearance: none;
+        width: 15px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--main);
+    }
+}
+
+#root {
+    height: 100vh;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}

@@ -1,0 +1,119 @@
+@import '../../variables.scss';
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: $white;
+    font-family: $montserrat;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 100px;
+    width: 1560px;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.headerLogo {
+    display: flex;
+    border: none;
+    background: none;
+    color: var(--main);
+    cursor: pointer;
+    outline: none;
+    font-size: 40px;
+    font-weight: 800;
+
+    &Span1,
+    &Span2 {
+        display: block;
+        transition: all 0.25s linear;
+    }
+
+    &Span2 {
+        color: var(--subAlt);
+    }
+
+    &:hover &Span1{
+        color: var(--subAlt);
+    }
+    &:hover &Span2{
+        color: var(--main);
+    }
+}
+
+.cartTotal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    width: 300px;
+    color: var(--subAlt);
+    font-size: 28px;
+    font-weight: 500;
+    user-select: none;
+
+    &Span {
+        margin-left: 10px;
+        color: var(--main);
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 1600px) and (min-width: 1440px) {
+    .container {
+        width: 1400px;
+    }
+}
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+    .container {
+        width: 984px;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .container {
+        width: 728px;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .container {
+        gap: 100px;
+        justify-content: center;
+        width: 405px;
+    }
+
+    .headerLogo {
+        font-size: 32px;
+    }
+
+    .cartTotal {
+        display: none;
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .container {
+        gap: 20px;
+        justify-content: center;
+        width: 300px;
+    }
+
+    .headerLogo {
+        font-size: 32px;
+    }
+
+    .cartTotal {
+        display: none;
+    }
+}

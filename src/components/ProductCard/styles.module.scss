@@ -1,0 +1,220 @@
+@import '../../variables.scss';
+
+.CardCont,
+.cardImgCont,
+.cardImg,
+.title,
+.description,
+.buttonCont,
+.buttons,
+.buttonAdd,
+.textCont {
+    box-sizing: border-box;
+}
+
+.CardCont{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    width: 100%;
+    border-radius: 5px;
+    background: var(--text);
+    text-align: center;
+    font-family: $montserrat;
+
+    &Small {
+        height: 300px;
+    }
+
+    &Big {
+        height: 400px;
+    }
+}
+
+.cardImgCont {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 60%;
+    width: 100%;
+    padding: 5px 15px;
+    overflow: hidden;
+}
+
+.cardImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.textCont {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.title {
+    padding: 0 15px 0 15px;
+    margin: 0;
+    color: var(--textAlt);
+    font-size: 18px;
+    font-weight: 600;
+    text-align: start;
+    text-decoration: none;
+}
+
+.description {
+    width: 100%;
+    padding: 0 15px 0 15px;
+    margin: 0;
+    color: var(--sub);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.buttonCont {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
+    padding: 5px 15px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 85px;
+    border: 1px solid var(--main);
+    border-radius: 5px;
+    background-color: $white;
+    color: var(--textAlt);
+    cursor: pointer;
+    font-family: $montserrat;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+        border-color: var(--subAlt);
+        background: var(--subAlt);
+        color: var(--text);
+    }
+
+    &:active {
+        background: var(--background);
+        border-color: var(--background);
+        color: var(--main);
+    }
+}
+
+.buttonAdd {
+    flex-grow: 1;
+    border: 1px solid var(--main);
+    background-color: var(--main);
+    color: var(--text);
+}
+
+.buttonInCart {
+    background-color: var(--sub);
+    border-color:  var(--sub);
+    color: var(--subAlt);
+}
+
+.buttonLink {
+    text-decoration: none;
+}
+
+.info {
+    &Cont { 
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 18px;
+        width: 100%;
+        font-size: 18px;
+
+        & > p {
+            filter: drop-shadow(0 0 5px $gray-text);
+        }
+    }
+
+    &Rate {
+        & > span {
+            color: $blue-bg;
+        }
+    }
+
+    &Stock {
+        & > span {
+            color: $red-bg;
+        }
+    }
+}
+
+@media (max-width: 767px) and (min-width: 425px) {
+    .CardCont {
+        &Small {
+            border-radius: 0;
+        }
+
+        &Big {
+            border: 1px solid var(--background);
+        }
+    }
+}
+
+@media (max-width: 424px) and (min-width: 320px) {
+    .CardCont {
+        &Small {
+            border-radius: 5px;
+            height: 100%;
+
+            & .cardImgCont {
+                width: 140px;
+                padding: 0;
+            }
+
+            & .textCont {
+                width: 140px;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            & .buttonCont {
+                display: flex;
+                flex-direction: column;
+            }
+
+            & .buttons {
+                width: 100%;
+            }
+
+        }
+
+        &Big {
+            border: 1px solid var(--background);
+        }
+    }
+
+    
+}

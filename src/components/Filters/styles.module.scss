@@ -1,0 +1,140 @@
+@import '../../variables.scss';
+
+.FiltersContainer, 
+.rangeContainer,
+.rangeHeading {
+    box-sizing: border-box;
+}
+
+.FiltersContainer {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 400px;
+    grid-template-rows: 1fr 1fr 150px 150px;
+    gap: 25px;
+    min-height: calc(100vh - 200px);
+    width: 400px;
+    border-radius: 15px;
+    background-color: var(--text);
+    color: var(--subAlt);
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.rangeContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    width: 100%;
+    padding: 20px;
+}
+
+.rangeHeading {
+    margin: 0;
+    padding: 0;
+    color: var(--main);
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.resetBut {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 65%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: var(--main);
+    color: var(--text);
+    cursor: pointer;
+    font-family: $montserrat;
+    font-size: 24px;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        background: var(--subAlt)
+    }
+
+    &:active {
+        background: var(--text);
+        color: var(--main);
+    }
+}
+
+.copyBut {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    width: 25%;
+    outline: none;
+    border: 1px solid var(--subAlt);
+    border-radius: 10px;
+    background: none;
+    color: var(--subAlt);
+    cursor: pointer;
+    font-family: $montserrat;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        border-color: var(--subAlt);
+        background: var(--subAlt);
+        color: var(--text);
+    }
+
+    &:active {
+        background: var(--text);
+        border-color: transparent;
+        color: var(--main);
+    }
+
+    &Copied {
+        background:  var(--subAlt);
+        color: var(--text);
+        cursor: default;
+
+        &:hover {
+            border: 1px solid var(--subAlt);
+            background:  var(--subAlt);
+            color: var(--text);
+        }
+
+        &:active {
+            border: 1px solid var(--subAlt);
+            background:  var(--subAlt);
+            color: var(--text);
+        }
+    }
+}
+
+.buttonsCont {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1439px) {
+    .FiltersContainer {
+        grid-template-columns: 276px;
+        width: 276px;
+    }
+
+    .resetBut {
+        width: 60%;
+    }
+
+    .copyBut {
+        width: 30%;
+    }
+}
+

@@ -1,0 +1,24 @@
+@import '../../variables.scss';
+
+.rangeContainer,
+.rangeHeading {
+    box-sizing: border-box;
+}
+
+.rangeContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 150px;
+    width: 100%;
+    padding: 20px;
+}
+
+.rangeHeading {
+    margin: 0;
+    padding: 0;
+    color: var(--textAlt);
+    font-size: 36px;
+    font-weight: 600;
+}
