@@ -1,5 +1,5 @@
 import {useState, useEffect, useCallback, useLayoutEffect} from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SortInput from '../../generics/SortInput/SortInput';
 import styles from './styles.module.scss';
 import { CardSizes, FiltersType, LinkOfFilters, Product, SortMethodType } from './types';
@@ -9,6 +9,8 @@ import BPLink from '../../assets/icons/big-products-icon.svg';
 import ProductCardsList from '../ProductCardsList/ProductCardsList';
 
 export default function MainPage() {
+    const navigate = useNavigate()
+
     const [isMFOpened, setIsMFOpened] = useState(false)
     const [queryFiltersLoaded, setQueryFiltersLoaded] = useState(false)
 
@@ -23,8 +25,6 @@ export default function MainPage() {
     const [curCardState, setCurState] = useState<CardSizes>('small')
 
     const [queryFilters, setQueryFilters] = useSearchParams();
-
-
 
     const setSortMethodFunc = (method: string) => {
         let res: SortMethodType = 'high-rate';
@@ -199,6 +199,11 @@ export default function MainPage() {
 
 
 
+    useEffect(() => {
+        if(window.location.hash) {
+            navigate(`/online-store/${window.location.hash.replace('#/', '')}`)
+        }
+    }, [navigate])
     useEffect(() => {
         let ignore = false;
         async function fetchProductsFunc() {
