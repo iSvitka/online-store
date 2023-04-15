@@ -201,7 +201,6 @@ export default function MainPage() {
 
     useEffect(() => {
         if(window.location.hash) {
-            console.log(window.location.hash)
             navigate(`/online-store/${window.location.hash.split('#/')[1]}`)
         }
     }, [navigate])
