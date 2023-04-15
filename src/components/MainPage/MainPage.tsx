@@ -1,4 +1,4 @@
-import {useState, useEffect, useCallback} from 'react';
+import {useState, useEffect, useCallback, useLayoutEffect} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SortInput from '../../generics/SortInput/SortInput';
 import styles from './styles.module.scss';
@@ -10,16 +10,21 @@ import ProductCardsList from '../ProductCardsList/ProductCardsList';
 
 export default function MainPage() {
     const [isMFOpened, setIsMFOpened] = useState(false)
+    const [queryFiltersLoaded, setQueryFiltersLoaded] = useState(false)
 
     const [products, setProducts] = useState<Product[]>();
     const [shownProducts, setShownProducts] = useState<Product[]>([]);
+
     const [filters, setFilters] = useState<FiltersType>();
+    const [canSort, setCanSort] = useState<boolean>(true);
+
     const [searchFilter, setSearchFilter] = useState<string>('');
     const [sortMethod, setSortMethod] = useState<SortMethodType>('high-rate');
-    const [canSort, setCanSort] = useState<boolean>(true);
-    const [queryFilters, setQueryFilters] = useSearchParams();
-    const [linkOfFiltersState, setLinkOfFiltersState] = useState<LinkOfFilters>()
     const [curCardState, setCurState] = useState<CardSizes>('small')
+
+    const [queryFilters, setQueryFilters] = useSearchParams();
+
+
 
     const setSortMethodFunc = (method: string) => {
         let res: SortMethodType = 'high-rate';
@@ -57,6 +62,7 @@ export default function MainPage() {
                 break
         }
     }
+
     const sortProducts = ( method: SortMethodType = sortMethod, ableToSort: boolean = canSort) => {
         if(ableToSort) {
             const res = [...shownProducts];
@@ -84,6 +90,7 @@ export default function MainPage() {
         sortProducts(setSortMethodFunc(event.target.value), true)
         setQueryFilters({...Object.fromEntries(queryFilters.entries()), sort: event.target.value})
     }
+
     const getFilters = (newFilters:FiltersType) => {
         const filterType: string = Object.keys(newFilters)[0]
         setFilters({...filters, ...newFilters});
@@ -93,13 +100,10 @@ export default function MainPage() {
             queryFilters.delete(filterType)
             setQueryFilters(queryFilters)
         }
-        
-        sortProducts(sortMethod, true);
     }
     const resetFilters = () => {
         if(filters) {
             setFilters(undefined)
-            sortProducts(sortMethod, true);
         }
         if(searchFilter) {
             setSearchFilter('')
@@ -194,43 +198,49 @@ export default function MainPage() {
     const memoSortProducts = useCallback(sortProducts, [shownProducts, sortMethod, canSort])
 
 
-    useEffect(memoSortProducts, [memoSortProducts])
-    useEffect(memoGetFilteredProducts, [memoGetFilteredProducts])
 
     useEffect(() => {
+        let ignore = false;
         async function fetchProductsFunc() {
             const res:Product[] = await fetch('https://dummyjson.com/products?limit=100').then(result=>result.json()).then(data => data.products);
-            setProducts(res);
-            setShownProducts(res)
+            return res
         }
-        fetchProductsFunc();
+        fetchProductsFunc().then((res) => {
+            if(!ignore) {
+                setProducts(res);
+                setShownProducts(res)
+            }
+        })
+
+        return () => {
+            ignore = true;
+        }
     }, [])
     useEffect(() => {
-        const linkOfFilters:LinkOfFilters = { 
-            linkFilters:  {
-                'Brand': queryFilters.get('Brand')?.split(','),
-                'Category': queryFilters.get('Category')?.split(','),
-                'Price': queryFilters.get('Price')?.split(',').map(num => Number(num)),
-                'Stock': queryFilters.get('Stock')?.split(',').map(num => Number(num))
-            },
-            linkSearch:  queryFilters.get('search'),
-            linkSort: queryFilters.get('sort'),
-            linkCardSize: queryFilters.get('size')
-        }
-        if(linkOfFilters) {
-            setLinkOfFiltersState(linkOfFilters)
-        }
-    }, [queryFilters])
-    useEffect(() => {
-        if(linkOfFiltersState) {
-            if(linkOfFiltersState.linkFilters) setFilters(linkOfFiltersState.linkFilters);
-            if(linkOfFiltersState.linkSearch) setSearchFilter(linkOfFiltersState.linkSearch)
-            if(linkOfFiltersState.linkSort) setSortMethodFunc(linkOfFiltersState.linkSort);
-            if(linkOfFiltersState.linkCardSize) setCurStateFunc(linkOfFiltersState.linkCardSize)
+        if(!queryFiltersLoaded) {
+            const linkOfFilters:LinkOfFilters = { 
+                linkFilters:  {
+                    'Brand': queryFilters.get('Brand')?.split(','),
+                    'Category': queryFilters.get('Category')?.split(','),
+                    'Price': queryFilters.get('Price')?.split(',').map(num => Number(num)),
+                    'Stock': queryFilters.get('Stock')?.split(',').map(num => Number(num))
+                },
+                linkSearch:  queryFilters.get('search'),
+                linkSort: queryFilters.get('sort'),
+                linkCardSize: queryFilters.get('size')
+            }
+            if(linkOfFilters.linkFilters) setFilters(linkOfFilters.linkFilters);
+            if(linkOfFilters.linkSearch) setSearchFilter(linkOfFilters.linkSearch)
+            if(linkOfFilters.linkSort) setSortMethodFunc(linkOfFilters.linkSort);
+            if(linkOfFilters.linkCardSize) setCurStateFunc(linkOfFilters.linkCardSize)
+            
             setCanSort(true)
-            setLinkOfFiltersState(undefined)
+            setQueryFiltersLoaded(true)
         }
-    }, [linkOfFiltersState])
+    }, [queryFilters, queryFiltersLoaded])
+
+    useLayoutEffect(memoGetFilteredProducts, [memoGetFilteredProducts])
+    useLayoutEffect(memoSortProducts, [memoSortProducts])
 
     const toggleMobFiltersMenu = () => {
         if(isMFOpened) {
