@@ -10,11 +10,11 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    grid-template-columns: 400px;
+    grid-template-columns: 350px;
     grid-template-rows: 1fr 1fr 150px 150px;
     gap: 25px;
     min-height: calc(100vh - 200px);
-    width: 400px;
+    width: 350px;
     border-radius: 15px;
     background-color: var(--text);
     color: var(--subAlt);

@@ -192,6 +192,7 @@
 
     .presentation{ 
         margin: 0;
+        padding: 0;
     }
 
     .price {
@@ -240,6 +241,11 @@
         &Container {
             width: 300px;
             margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        &Description {
+            padding: 0 10px;
         }
     }
 }

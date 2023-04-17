@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../lib/CartContext/CartContext';
@@ -47,7 +48,7 @@ export default function ProductCard({ product, cardSize }: ProductCardProps) {
             </Link>
             <div className={styles.textCont}>
                 <Link
-                    className={styles.title}
+                    className={cn(styles.title, {[styles.titleBig]: cardSize === 'big'})}
                     to={`/online-store/${product.id}`}
                 >
                     {product.title}

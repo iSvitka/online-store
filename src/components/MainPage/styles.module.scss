@@ -36,8 +36,8 @@
         flex-direction: column;
         justify-content: flex-start;
         min-height: calc(100vh - 300px);
-        width: 1150px;
-        gap: 15px;
+        width: 1175px;
+        gap: 40px;
     }
 
     &UIBar {
@@ -46,7 +46,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 15px;
         height: 55px;
-        width: 1150px;
+        width: 1175px;
     }
 }
 
@@ -163,11 +163,11 @@
 
     .products {
         &Container {
-            width: 990px;
+            width: 1015px;
         }
 
         &UIBar {
-            width: 990px;
+            width: 1015px;
         }
     }
 }

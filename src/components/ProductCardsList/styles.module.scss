@@ -4,10 +4,10 @@
     &List {
         display: grid;
         align-items: center;
-        gap: 25px;
+        gap: 10px;
         justify-content: center;
         min-height: calc(100vh - 265px);
-        width: 1150px;
+        width: 1175px;
         border-radius: 5px;
         font-size: 24px;
     }
@@ -38,7 +38,7 @@
 @media (max-width: 1600px) and (min-width: 1440px) {
     .Products {
         &List {
-            width: 990px;
+            width: 1015px;
         }
     }
 }
@@ -87,7 +87,7 @@
     .Products {
         &List {
             width: 405px;
-            gap: 0px;
+            gap: 5px 5px;
         }
     }
 
